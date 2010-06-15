@@ -3,8 +3,8 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Rubytest
 Bundle-SymbolicName: org.osgiscripting.rubytest
 Bundle-Version: 0.0.1
-Require-Bundle: org.osgiscripting.extender, org.jruby.jruby;bundle-version="1.5.0"
+Require-Bundle: org.jruby.jruby;bundle-version="1.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.osgiscripting.extender
+Import-Package: org.osgiscripting.apitest
 Script-Language: ruby
 Script-File: Trail.rb
