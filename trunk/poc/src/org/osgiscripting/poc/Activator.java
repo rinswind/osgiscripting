@@ -15,10 +15,13 @@ import org.osgi.framework.BundleContext;
 import org.osgiscripting.apitest.ScriptService;
 
 /**
- * Proof Of Concept bundle. Tries to locate the ruby script engine and executes
- * an example script from another bundle.
+ * Proof Of Concept bundle. Locates the ruby engines, than locate a test script,
+ * than executes the script through the engine. Bridges the class loaders of the
+ * engine and the script allowing the engine to load resources from the script
+ * bundle.
  * 
- * @author rinswind
+ * @author mmc
+ * @author tbb
  */
 public class Activator implements BundleActivator {
   private BundleContext bc;
