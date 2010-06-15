@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: OsgiScriptTracker
+Bundle-SymbolicName: org.osgiscripting.scripts
+Bundle-Version: 0.0.1
+Bundle-Activator: org.osgiscripting.scripts.internal.Activator
+Require-Bundle: org.osgiscripting.apitest, org.eclipse.osgi
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: 
+ org.osgiscripting.engines,
+ org.osgiscripting.apitest,
+ org.osgi.framework;version="1.4.0"
+Export-Package: org.osgiscripting.scripts;version="0.0.1"
+Eclipse-BuddyPolicy: dependent
