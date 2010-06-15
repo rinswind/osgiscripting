@@ -16,7 +16,7 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.BundleEvent;
 import org.osgi.util.tracker.BundleTracker;
 import org.osgi.util.tracker.BundleTrackerCustomizer;
-import org.osgiscripting.extender.ScriptService;
+import org.osgiscripting.apitest.ScriptService;
 
 public class ScriptTracker implements BundleTrackerCustomizer {
   private final BundleTracker tracker;

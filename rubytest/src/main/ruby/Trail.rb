@@ -6,7 +6,7 @@ module Org
       # Instrumented test implementation of a backup service in JRuby. Used to test
       # that core module works with JRuby scripts for plugin modules.
       class TrailRubySample 
-        include org.osgiscripting.extender.ScriptService;
+        include org.osgiscripting.apitest.ScriptService;
       
         def run(arg) 
           return "result from jruby run Trial with value "+arg+"."

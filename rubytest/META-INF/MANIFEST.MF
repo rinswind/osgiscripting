@@ -5,6 +5,6 @@ Bundle-SymbolicName: org.osgiscripting.rubytest
 Bundle-Version: 0.0.1
 Require-Bundle: org.jruby.jruby;bundle-version="1.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Import-Package: org.osgiscripting.apitest
+Import-Package: org.osgiscripting.apitest;version="0.0.1"
 Script-Language: ruby
 Script-File: Trail.rb
