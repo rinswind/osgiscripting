@@ -72,34 +72,46 @@ public class ScriptTracker implements BundleTrackerCustomizer {
   }
 
   private URL findScript(Bundle bundle) {
+    System.out.println(String.format("findScript(%s:%s)", bundle.getSymbolicName(), bundle.getHeaders().get(SCRIPT_FILE)));
+    
     String scriptFile = (String) bundle.getHeaders().get(SCRIPT_FILE);
     if (scriptFile == null) {
+      System.out.println("findScript: no script file");
       return null;
     }
 
     scriptFile = scriptFile.trim();
     if (scriptFile.length() == 0) {
+      System.out.println("findScript: no script");
       return null;
     }
 
-    return bundle.getResource(scriptFile);
+    URL res = bundle.getResource(scriptFile);
+    System.out.println("findScript: " + res);
+    return res;
   }
 
   private ScriptEngineFactory findFactory(Bundle bundle) {
+    System.out.println(String.format("findFactory(%s:%s)", bundle.getSymbolicName(), bundle.getHeaders().get(SCRIPT_LANGUAGE)));
+    
     ServiceReference[] refs;
     try {
       refs = bc.getServiceReferences(
           ScriptEngineFactory.class.getName(), 
-          "(" + LANGUAGE_NAME + "=" + bundle.getHeaders().get(SCRIPT_LANGUAGE) + ")");
+          // Do a case insensitive search
+          "(" + LANGUAGE_NAME + "~=" + bundle.getHeaders().get(SCRIPT_LANGUAGE) + ")");
     } catch (InvalidSyntaxException e) {
       throw new RuntimeException("unexpected", e);
     }
     
     if (refs == null) {
+      System.out.println("findFactory: null");
       return null;
     }
     
-    return (ScriptEngineFactory) bc.getService(refs[0]);
+    ScriptEngineFactory res = (ScriptEngineFactory) bc.getService(refs[0]);
+    System.out.println("findFactory: " + res);
+    return res;
   }
 
   private <T> T execute(URL script, Class<T> resType, ScriptEngineFactory factory,
