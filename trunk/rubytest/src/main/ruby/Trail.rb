@@ -5,15 +5,15 @@ module Org
     module Rubytest
       # Instrumented test implementation of a backup service in JRuby. Used to test
       # that core module works with JRuby scripts for plugin modules.
-      class TrailRubySample 
+      class ScriptServiceImpl 
         include org.osgiscripting.apitest.ScriptService;
       
         def run(arg) 
-          return "result from jruby run Trial with value "+arg+"."
+          return "jruby called with value " + arg
         end
       end # class
     end
   end  
 end
 
-return Org::Osgiscripting::Rubytest::TrailRubySample.new
+return Org::Osgiscripting::Rubytest::ScriptServiceImpl.new
