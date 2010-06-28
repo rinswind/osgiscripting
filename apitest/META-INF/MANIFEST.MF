@@ -3,6 +3,5 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Apitest
 Bundle-SymbolicName: org.osgiscripting.apitest
 Bundle-Version: 0.0.1
-Export-Package: org.osgiscripting.apitest;version="0.0.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Bundle-ActivationPolicy: lazy
+Export-Package: org.osgiscripting.apitest;version="0.0.1"

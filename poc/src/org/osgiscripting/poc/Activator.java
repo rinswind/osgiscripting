@@ -12,10 +12,12 @@ import javax.script.ScriptEngineFactory;
 import org.osgi.framework.Bundle;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
+import org.osgi.framework.InvalidSyntaxException;
+import org.osgi.framework.ServiceReference;
 import org.osgiscripting.apitest.ScriptService;
 
 /**
- * Proof Of Concept bundle. Locates the ruby engines, than locate a test script,
+ * Proof Of Concept bundle. Locates the ruby engine, than locates a test script,
  * than executes the script through the engine. Bridges the class loaders of the
  * engine and the script allowing the engine to load resources from the script
  * bundle.
@@ -32,7 +34,6 @@ public class Activator implements BundleActivator {
     // Find engine factory
     Bundle engineBundle = findBundle("org.jruby.jruby");
     ScriptEngineFactory factory = getFactory(engineBundle);
-    //ScriptEngineFactory factory = getFactory(bc);
     
     // Find script
     Bundle scriptBundle = findBundle("org.osgiscripting.rubytest");
@@ -48,25 +49,25 @@ public class Activator implements BundleActivator {
   public void stop(BundleContext context) throws Exception {
   }
 
-//  private ScriptEngineFactory getFactory(BundleContext bc) {
-//    ServiceReference[] refs;
-//    try {
-//      refs = bc.getServiceReferences(
-//          ScriptEngineFactory.class.getName(), "(language-name=ruby)");
-//    } catch (InvalidSyntaxException e) {
-//      throw new RuntimeException("unexpected", e);
-//    }
-//    
-//    if (refs == null) {
-//      return null;
-//    }
-//    
-//    return (ScriptEngineFactory) bc.getService(refs[0]);
-//  }
+  private ScriptEngineFactory getFactory(BundleContext bc) {
+    ServiceReference[] refs;
+    try {
+      refs = bc.getServiceReferences(
+          ScriptEngineFactory.class.getName(), "(language-name=ruby)");
+    } catch (InvalidSyntaxException e) {
+      throw new RuntimeException("unexpected", e);
+    }
+    
+    if (refs == null) {
+      return null;
+    }
+    
+    return (ScriptEngineFactory) bc.getService(refs[0]);
+  }
   
   private <T> T execute(URL script, Class<T> resType, ScriptEngineFactory factory,
       Bundle scriptBundle) throws Exception {
-
+    
     ScriptEngine engine;
     Object result;
 
