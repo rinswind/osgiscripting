@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Jstest
+Bundle-SymbolicName: org.osgiscripting.jstest
+Bundle-Version: 0.0.1
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.osgiscripting.apitest;version="0.0.1"
+Script-Language: ecmascript
+Script-File: Trail.js
