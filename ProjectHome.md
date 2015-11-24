@@ -1,0 +1,1 @@
+This project aims at making JVM scripting languages that implement the javax.script api usable from OSGI.
